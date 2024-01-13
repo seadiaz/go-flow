@@ -1,0 +1,227 @@
+[
+  {
+    "SuitePath": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers",
+    "SuiteDescription": "Workers Suite",
+    "SuiteLabels": [],
+    "SuiteSucceeded": true,
+    "SuiteHasProgrammaticFocus": false,
+    "SpecialSuiteFailureReasons": null,
+    "PreRunStats": {
+      "TotalSpecs": 2,
+      "SpecsThatWillRun": 2
+    },
+    "StartTime": "2024-01-11T20:26:07.99267-03:00",
+    "EndTime": "2024-01-11T20:26:07.993304-03:00",
+    "RunTime": 634917,
+    "SuiteConfig": {
+      "RandomSeed": 1705015565,
+      "RandomizeAllSpecs": false,
+      "FocusStrings": [
+        "Simple Worker"
+      ],
+      "SkipStrings": null,
+      "FocusFiles": null,
+      "SkipFiles": null,
+      "LabelFilter": "",
+      "FailOnPending": false,
+      "FailFast": false,
+      "FlakeAttempts": 0,
+      "MustPassRepeatedly": 0,
+      "DryRun": false,
+      "PollProgressAfter": 0,
+      "PollProgressInterval": 0,
+      "Timeout": 3598880319750,
+      "EmitSpecProgress": false,
+      "OutputInterceptorMode": "",
+      "SourceRoots": null,
+      "GracePeriod": 30000000000,
+      "ParallelProcess": 1,
+      "ParallelTotal": 1,
+      "ParallelHost": ""
+    },
+    "SpecReports": [
+      {
+        "ContainerHierarchyTexts": [
+          "Simple Worker",
+          "when a new valid message arrives"
+        ],
+        "ContainerHierarchyLocations": [
+          {
+            "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+            "LineNumber": 11
+          },
+          {
+            "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+            "LineNumber": 21
+          }
+        ],
+        "ContainerHierarchyLabels": [
+          [],
+          []
+        ],
+        "LeafNodeType": "It",
+        "LeafNodeLocation": {
+          "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+          "LineNumber": 22
+        },
+        "LeafNodeLabels": [],
+        "LeafNodeText": "should execute the handler",
+        "State": "passed",
+        "StartTime": "2024-01-11T20:26:07.992907-03:00",
+        "EndTime": "2024-01-11T20:26:07.99314-03:00",
+        "RunTime": 233000,
+        "ParallelProcess": 1,
+        "NumAttempts": 1,
+        "MaxFlakeAttempts": 0,
+        "MaxMustPassRepeatedly": 0,
+        "SpecEvents": [
+          {
+            "SpecEventType": "Node",
+            "CodeLocation": {
+              "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+              "LineNumber": 15
+            },
+            "TimelineLocation": {
+              "Order": 1,
+              "Time": "2024-01-11T20:26:07.993029-03:00"
+            },
+            "Message": "Simple Worker",
+            "NodeType": "BeforeEach"
+          },
+          {
+            "SpecEventType": "Node (End)",
+            "CodeLocation": {
+              "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+              "LineNumber": 15
+            },
+            "TimelineLocation": {
+              "Order": 3,
+              "Time": "2024-01-11T20:26:07.993071-03:00"
+            },
+            "Message": "Simple Worker",
+            "Duration": 41625,
+            "NodeType": "BeforeEach"
+          },
+          {
+            "SpecEventType": "Node",
+            "CodeLocation": {
+              "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+              "LineNumber": 22
+            },
+            "TimelineLocation": {
+              "Order": 4,
+              "Time": "2024-01-11T20:26:07.993072-03:00"
+            },
+            "Message": "should execute the handler",
+            "NodeType": "It"
+          },
+          {
+            "SpecEventType": "Node (End)",
+            "CodeLocation": {
+              "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+              "LineNumber": 22
+            },
+            "TimelineLocation": {
+              "Order": 6,
+              "Time": "2024-01-11T20:26:07.993137-03:00"
+            },
+            "Message": "should execute the handler",
+            "Duration": 64541,
+            "NodeType": "It"
+          }
+        ]
+      },
+      {
+        "ContainerHierarchyTexts": [
+          "Simple Worker",
+          "when a new invalid message arrives"
+        ],
+        "ContainerHierarchyLocations": [
+          {
+            "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+            "LineNumber": 11
+          },
+          {
+            "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+            "LineNumber": 32
+          }
+        ],
+        "ContainerHierarchyLabels": [
+          [],
+          []
+        ],
+        "LeafNodeType": "It",
+        "LeafNodeLocation": {
+          "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+          "LineNumber": 33
+        },
+        "LeafNodeLabels": [],
+        "LeafNodeText": "should execute the handler",
+        "State": "passed",
+        "StartTime": "2024-01-11T20:26:07.993192-03:00",
+        "EndTime": "2024-01-11T20:26:07.99326-03:00",
+        "RunTime": 68541,
+        "ParallelProcess": 1,
+        "NumAttempts": 1,
+        "MaxFlakeAttempts": 0,
+        "MaxMustPassRepeatedly": 0,
+        "SpecEvents": [
+          {
+            "SpecEventType": "Node",
+            "CodeLocation": {
+              "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+              "LineNumber": 15
+            },
+            "TimelineLocation": {
+              "Order": 7,
+              "Time": "2024-01-11T20:26:07.993194-03:00"
+            },
+            "Message": "Simple Worker",
+            "NodeType": "BeforeEach"
+          },
+          {
+            "SpecEventType": "Node (End)",
+            "CodeLocation": {
+              "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+              "LineNumber": 15
+            },
+            "TimelineLocation": {
+              "Order": 9,
+              "Time": "2024-01-11T20:26:07.993214-03:00"
+            },
+            "Message": "Simple Worker",
+            "Duration": 19417,
+            "NodeType": "BeforeEach"
+          },
+          {
+            "SpecEventType": "Node",
+            "CodeLocation": {
+              "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+              "LineNumber": 33
+            },
+            "TimelineLocation": {
+              "Order": 10,
+              "Time": "2024-01-11T20:26:07.993215-03:00"
+            },
+            "Message": "should execute the handler",
+            "NodeType": "It"
+          },
+          {
+            "SpecEventType": "Node (End)",
+            "CodeLocation": {
+              "FileName": "/Users/sdiazmoreno/Documents/projects/go-flow/pkg/workers/simple_worker_test.go",
+              "LineNumber": 33
+            },
+            "TimelineLocation": {
+              "Order": 12,
+              "Time": "2024-01-11T20:26:07.993257-03:00"
+            },
+            "Message": "should execute the handler",
+            "Duration": 42000,
+            "NodeType": "It"
+          }
+        ]
+      }
+    ]
+  }
+]
