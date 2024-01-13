@@ -6,25 +6,25 @@ import (
 	"github.com/seadiaz/go-flow/pkg/helpers"
 )
 
-var _ Worker = &simpleWorker{}
+var _ Worker = &simpleWorker[struct{}]{}
 
-func NewSimpleWorker(in <-chan any) *simpleWorker {
-	return &simpleWorker{
+func NewSimpleWorker[T any](in <-chan T) *simpleWorker[T] {
+	return &simpleWorker[T]{
 		baseWorker: newBaseWorker(),
 		in:         in,
 	}
 }
 
-type simpleWorker struct {
+type simpleWorker[T any] struct {
 	baseWorker
-	in <-chan any
+	in <-chan T
 }
 
-func (w *simpleWorker) AddMiddleware(m middleware) {
+func (w *simpleWorker[T]) AddMiddleware(m middleware) {
 	w.middlewares = append(w.middlewares, m)
 }
 
-func (w *simpleWorker) Run(h Handler) {
+func (w *simpleWorker[T]) Run(h Handler) {
 	finalHandler := w.combine(h)
 	for {
 		msg, ok := <-w.in
@@ -37,7 +37,7 @@ func (w *simpleWorker) Run(h Handler) {
 
 }
 
-func (w *simpleWorker) RunWithContext(ctx context.Context, h Handler, done func()) {
+func (w *simpleWorker[T]) RunWithContext(ctx context.Context, h Handler, done func()) {
 	helpers.LogInfo("not yet implemented")
 	done()
 }
