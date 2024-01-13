@@ -2,7 +2,8 @@ package workers
 
 import (
 	"fmt"
-	"go-flow/pkg/helpers"
+
+	"github.com/seadiaz/go-flow/pkg/helpers"
 )
 
 func NewLoggingMiddleware() middleware {

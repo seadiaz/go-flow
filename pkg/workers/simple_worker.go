@@ -2,7 +2,8 @@ package workers
 
 import (
 	"context"
-	"go-flow/pkg/helpers"
+
+	"github.com/seadiaz/go-flow/pkg/helpers"
 )
 
 var _ Worker = &simpleWorker{}

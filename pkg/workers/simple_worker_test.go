@@ -2,7 +2,8 @@ package workers_test
 
 import (
 	"errors"
-	"go-flow/pkg/workers"
+
+	"github.com/seadiaz/go-flow/pkg/workers"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"

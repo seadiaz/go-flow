@@ -1,4 +1,4 @@
-module go-flow
+module github.com/seadiaz/go-flow
 
 go 1.21.1
 
