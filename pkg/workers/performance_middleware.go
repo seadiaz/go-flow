@@ -1,21 +1,32 @@
 package workers
 
-import "fmt"
+import (
+	"fmt"
+	"time"
 
-func NewPerformanceMiddleware() middleware {
+	"github.com/seadiaz/go-flow/pkg/helpers"
+)
+
+const (
+	HeaderPerformance headerKey = "performance"
+)
+
+func NewPerformanceMiddleware[T any]() middleware[T] {
 	return performanceMiddleware
 }
 
-func performanceMiddleware(next Handler) Handler {
-	return func(args ...any) (any, error) {
-		// do something before
+func performanceMiddleware[T any](next Handler[T]) Handler[T] {
+	return func(args ...any) (HandlerResult[T], error) {
+		initialTime := time.Now()
 
 		result, err := next(args...)
 		if err != nil {
-			return nil, fmt.Errorf("error executing child: %w", err)
+			return HandlerResult[T]{}, fmt.Errorf("error executing child: %w", err)
 		}
 
-		// do something after
+		duration := time.Since(initialTime)
+		result.Headers[HeaderPerformance] = headerValue(duration.String())
+		helpers.LogInfo("hanlder durations: %s", duration.String())
 		return result, nil
 	}
 }

@@ -2,12 +2,34 @@ package workers
 
 import "context"
 
-type Worker interface {
-	AddMiddleware(m middleware)
-	Run(Handler)
-	RunWithContext(ctx context.Context, h Handler, done func())
+type headerKey string
+type headerValue string
+type bodyValue any
+
+const (
+	HeaderA headerKey = "A"
+)
+
+type Worker[T any] interface {
+	AddMiddleware(m middleware[T])
+	OnShutdown(cb func())
+	Run(Handler[T])
+	RunWithContext(ctx context.Context, h Handler[T], done func())
 }
 
-type Handler func(...any) (any, error)
+type Handler[T any] func(...any) (HandlerResult[T], error)
 
-type middleware func(Handler) Handler
+type HandlerResult[T any] struct {
+	Headers map[headerKey]headerValue
+	Body    T
+}
+
+type middleware[T any] func(Handler[T]) Handler[T]
+
+func HandlerResultEmpty[T any]() HandlerResult[T] {
+	var bodyValue T
+	return HandlerResult[T]{
+		Headers: make(map[headerKey]headerValue),
+		Body:    bodyValue,
+	}
+}

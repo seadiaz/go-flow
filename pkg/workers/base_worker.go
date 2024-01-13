@@ -1,16 +1,20 @@
 package workers
 
-func newBaseWorker() baseWorker {
-	return baseWorker{
-		middlewares: make([]middleware, 0),
+func newBaseWorker[T any]() baseWorker[T] {
+	return baseWorker[T]{
+		middlewares: make([]middleware[T], 0),
+		shutdownFn: func() {
+			// empty function
+		},
 	}
 }
 
-type baseWorker struct {
-	middlewares []middleware
+type baseWorker[T any] struct {
+	middlewares []middleware[T]
+	shutdownFn  func()
 }
 
-func (w *baseWorker) combine(h Handler) Handler {
+func (w *baseWorker[T]) combine(h Handler[T]) Handler[T] {
 	if len(w.middlewares) == 0 {
 		return h
 	}
@@ -20,4 +24,8 @@ func (w *baseWorker) combine(h Handler) Handler {
 		result = m(result)
 	}
 	return result
+}
+
+func (w *baseWorker[T]) OnShutdown(cb func()) {
+	w.shutdownFn = cb
 }

@@ -10,20 +10,26 @@ import (
 )
 
 var _ = Describe("Simple Worker", func() {
-	var sut workers.Worker
-	var handler workers.Handler
+	var sut workers.Worker[any]
+	var handler workers.Handler[any]
 	var in chan any
+	var shutdownFn func()
 	BeforeEach(func() {
 		in = make(chan any)
 		sut = workers.NewSimpleWorker(in)
-		sut.AddMiddleware(workers.NewLoggingMiddleware())
+		shutdownFn = func() {
+			// empty function
+		}
+		sut.AddMiddleware(workers.NewLoggingMiddleware[any]())
+		sut.AddMiddleware(workers.NewPerformanceMiddleware[any]())
+		sut.OnShutdown(shutdownFn)
 	})
 
 	When("a new valid message arrives", func() {
 		It("should execute the handler", func() {
-			handler = func(params ...any) (any, error) {
+			handler = func(params ...any) (workers.HandlerResult[any], error) {
 				Expect(params).Should(HaveLen(1))
-				return nil, nil
+				return workers.HandlerResultEmpty[any](), nil
 			}
 			go sut.Run(handler)
 			in <- struct{}{}
@@ -32,9 +38,9 @@ var _ = Describe("Simple Worker", func() {
 
 	When("a new invalid message arrives", func() {
 		It("should execute the handler", func() {
-			handler = func(params ...any) (any, error) {
+			handler = func(params ...any) (workers.HandlerResult[any], error) {
 				Expect(params).Should(HaveLen(1))
-				return nil, errors.New("d03ff5bb-dab2-4c2e-9ffe-92216146cab5")
+				return workers.HandlerResultEmpty[any](), errors.New("d03ff5bb-dab2-4c2e-9ffe-92216146cab5")
 			}
 			go sut.Run(handler)
 			in <- struct{}{}

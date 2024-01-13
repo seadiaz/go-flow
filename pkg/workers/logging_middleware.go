@@ -6,18 +6,18 @@ import (
 	"github.com/seadiaz/go-flow/pkg/helpers"
 )
 
-func NewLoggingMiddleware() middleware {
+func NewLoggingMiddleware[T any]() middleware[T] {
 	return loggingMiddleware
 }
 
-func loggingMiddleware(next Handler) Handler {
-	return func(args ...any) (any, error) {
+func loggingMiddleware[T any](next Handler[T]) Handler[T] {
+	return func(args ...any) (HandlerResult[T], error) {
 		helpers.LogInfo("hanlder initiatized")
 
 		result, err := next(args...)
 		if err != nil {
 			helpers.LogInfo("hanlder failed: %s", err.Error())
-			return nil, fmt.Errorf("error executing child: %w", err)
+			return HandlerResult[T]{}, fmt.Errorf("error executing child: %w", err)
 		}
 
 		helpers.LogInfo("hanlder finished")
